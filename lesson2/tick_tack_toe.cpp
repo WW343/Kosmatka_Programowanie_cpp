@@ -28,7 +28,7 @@ bool isFinished(char board[3][3],char *winner){
         for(int j = 0;j<3;j++)
         {
             if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] !=' '){
-                cout<<board[i][0]<<" won"<<endl;
+                // cout<<board[i][0]<<" won"<<endl;
                 *winner = board[i][0];
                 return true;
                 break;
@@ -51,7 +51,7 @@ bool isFinished(char board[3][3],char *winner){
                 return true;
                 break;
         }
-        cout<<endl;
+        // cout<<endl;
         }
     }
     return false;
