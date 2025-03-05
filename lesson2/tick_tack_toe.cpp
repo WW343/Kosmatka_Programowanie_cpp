@@ -102,6 +102,10 @@ int main(){
         showBoard(board);
 
         turn++;
+        if(turn == 9){
+            cout<<"Remis"<<endl;
+            break;
+        }
     
     
 }
