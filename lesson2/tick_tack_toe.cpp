@@ -1,10 +1,28 @@
 #include <iostream>
 #include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
 using namespace std;
 
-void clearBoeard(char board[3][3]){
-    for (int i = 0; i < 3; i++) {
-        for(int j = 0;j<3;j++)
+
+
+int Board_Size_define(int argc, char *argv[]){
+    int Board_Size;
+    if(argc == 2){
+        if(atoi(argv[1]) < 3){
+            cout<<"Board size must be greater than 3"<<endl;
+            return 3;
+        }
+        Board_Size = atoi(argv[1]);
+    }
+    else{
+        Board_Size = 3;
+    }
+    return Board_Size;
+}
+void clearBoeard(char **board,int Board_Size){
+    for (int i = 0; i < Board_Size; i++){  
+        for(int j = 0;j<Board_Size;j++)
         {
              board[i][j] = ' ';
             
@@ -12,88 +30,118 @@ void clearBoeard(char board[3][3]){
         };
 }
 
-void showBoard(char board[3][3]){
-    for (int i = 0; i < 3; i++) {
+void showBoard(char **board,int Board_Size){
+    for (int i = 0; i < Board_Size; i++) {
         
-        for(int j = 0;j<3;j++)
+        for(int j = 0;j<Board_Size;j++)
         {
             cout<<"|"<<board[i][j];  
         };
         cout<<"|"<<endl;
         };
 }
-bool isFinished(char board[3][3],char *winner){
-    
-    for (int i = 0; i < 3; i++) {
-        for(int j = 0;j<3;j++)
-        {
-            if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] !=' '){
-                // cout<<board[i][0]<<" won"<<endl;
-                cout<<"war1"<<endl;
-                *winner = board[i][0];
-                return true;
-                break;
-            }
-            else if(board[0][j] == board[1][j]&& board[1][j] == board[2][j] &&board[1][j]!= ' '){
-                cout<<board[0][j]<<" won"<<endl;
-                cout<<"war2"<<endl;
 
-                *winner = board[0][j];
-                return true;
-                break;
-            }
-            else if(board[0][0] == board[1][1]&& board[1][1] == board[2][2] &&board[1][1] !=' '){
-                cout<<board[0][0]<<" won"<<endl;
-                cout<<"war3"<<endl;
+bool isFinished(char **board,int Board_Size,char *winner){
+    int sum_one = 0;
 
-                *winner = board[0][0];
-                return true;
-                break;
-            }
-            else if(board[0][2] == board[1][1]&& board[1][1] == board[2][0] &&board[1][1] !=' '){
-                cout<<board[0][0]<<" won"<<endl;
-                cout<<"war4"<<endl;
-
-                *winner = board[0][0];
-                return true;
-                break;
+    for (int i = 0; i <Board_Size; i++) {
+        int counter_vertically = 0;
+        if (board[i][counter_vertically] == 'X'){
+            sum_one++;
         }
-        // cout<<endl;
+        if (board[i][counter_vertically] == 'O'){
+            sum_one--;
         }
+        if(sum_one ==Board_Size || sum_one == Board_Size*-1){
+            return true;
+        }
+        counter_vertically++;
+        
+    }
+    int sum_two = 0;
+
+    for (int i = 0; i <Board_Size; i++) {
+        int counter_horizontally = 0;
+        if (board[counter_horizontally][i] == 'X'){
+            sum_two++;
+        }
+        if (board[counter_horizontally][i] == 'O'){
+            sum_two--;
+        }
+        if(sum_two ==Board_Size || sum_two == Board_Size*-1){
+            return true;
+        }
+        counter_horizontally++;
+    }
+    int sum_three = 0;
+
+    for (int i = 0; i <Board_Size; i++){
+        if(board[i][i] =='X'){
+            sum_three++;
+        }
+        if(board[i][i] =='O'){
+            sum_three--;
+        }
+        if(sum_three ==Board_Size || sum_three == Board_Size*-1){
+            return true;
+        }
+    }
+    int sum_four = 0;
+
+    for (int i = Board_Size-1;i>=0;i--){
+        int counter = 0;
+        if(board[i][counter] == 'X'){
+            sum_four++;
+        }
+        if(board[i][counter] == '0'){
+            sum_four--;
+        }
+        if(sum_four ==Board_Size || sum_four == Board_Size*-1){
+            return true;
+        }
+        counter++;
+        
     }
     return false;
 }
 
-bool setPoint(char board[3][3], unsigned int x, unsigned int y, char player){
+bool setPoint(char **board, unsigned int x, unsigned int y, char player){
     if(board[x][y] == ' '){
         board[x][y] = player;
         return true;
     }
-    
         return false;
     
 }
-bool check_if_digit(unsigned int number){
-    if(number <3){
+bool check_if_digit(unsigned int number,int size){
+    if(number <size){
         return true;
     }
     return false;
 }
-int main(){
-    char board[3][3];
+
+int main(int argc, char *argv[]){
+    char **board;
     char winner = ' ';
     int turn = 0;
     char player = 'O';
-    clearBoeard(board);
-    showBoard(board);
+    int size = Board_Size_define(argc,argv);
+    board = new char *[size];
+    for (int i = 0; i < size; i++) {
+        board[i] = new char[size];
+        }
     
-    while(!isFinished(board,&winner)){
+    
+    clearBoeard(board,size);
+    showBoard(board,size);
+    
+    while(!isFinished(board,size,&winner)){
         unsigned int row=100,col=100;
-        while (!check_if_digit(row)){
+        while (!check_if_digit(row,size)){
             cout<<"Podaj numer wiersza";
             scanf("%u", &row);
         }
-        while (!check_if_digit(col)){
+        while (!check_if_digit(col,size)){
             cout<<"Podaj numer kolumny";
             scanf("%u", &col);
         }
@@ -106,10 +154,10 @@ int main(){
                 player = 'X';
             }
         };
-        showBoard(board);
+        showBoard(board,size);
         cout<<turn<<endl;
         turn++;
-        if(turn == 9){
+        if(turn == size*size){
             cout<<"Remis"<<endl;
             break;
         }
@@ -125,3 +173,5 @@ int main(){
 // man 3 rand
 // #include <cstdlib>
 // rand()%(boardSize*boarSize)
+
+// napraw isfinished bo źle liczy
