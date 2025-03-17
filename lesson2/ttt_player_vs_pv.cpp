@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <cstdio>
 #include <cstdlib>
+
 using namespace std;
 
 
@@ -140,6 +141,14 @@ bool setPoint(char **board, unsigned int x, unsigned int y, char player){
         return false;
     
 }
+bool setPoint_computer(char **board, unsigned int x, unsigned int y, char player){
+    if(board[x][y] == ' ' || board[x][y] !='O'){
+        board[x][y] = player;
+        return true;
+    }
+        return false;
+    
+}
 bool check_if_digit(unsigned int number, int size){
     if(number < size){
         return true;
@@ -147,7 +156,18 @@ bool check_if_digit(unsigned int number, int size){
     return false;
 }
 
+int getRandomNumber(int n) {
+    n--;
+    if (n < 0) {
+        std::cerr << "Error: n must be non-negative." << std::endl;
+        return -1; // Return an error code
+    }
+
+    return rand() % (n + 1);
+}
+
 int main(int argc, char *argv[]){
+    srand(time(0));
     char **board;
     char winner = ' ';
     int turn = 0;
@@ -158,31 +178,31 @@ int main(int argc, char *argv[]){
         board[i] = new char[size];
         }
     
-    
     clearBoeard(board,size);
     showBoard(board,size);
     
     while(!isFinished(board,size,&winner)){
         unsigned int row=100,col=100;
-        while (!check_if_digit(row,size)){
-            cout<<"Podaj numer wiersza";
-            scanf("%u", &row);
-        }
-        while (!check_if_digit(col,size)){
-            cout<<"Podaj numer kolumny";
-            scanf("%u", &col);
-        }
+        if(player == 'O'){
+            while (!check_if_digit(row,size)){
+                cout<<"Podaj numer wiersza";
+                scanf("%u", &row);
+            }
+            while (!check_if_digit(col,size)){
+                cout<<"Podaj numer kolumny";
+                scanf("%u", &col);
+            }
 
-        if(setPoint(board,row,col,player)){
-            if(player == 'X'){
-                player = 'O';
-                turn++;
-            }
-            else{
+            if(setPoint(board,row,col,player)){
                 player = 'X';
-                turn++;
-            }
-        };
+            };
+        }
+        else if(player == 'X'){
+            if(setPoint(board,getRandomNumber(size),getRandomNumber(size),player)){
+                player = 'O';
+            };
+
+        }
         showBoard(board,size);
         cout<<turn<<endl;
         

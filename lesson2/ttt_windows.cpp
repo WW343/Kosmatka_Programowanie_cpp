@@ -42,51 +42,37 @@ void showBoard(char **board,int Board_Size){
 }
 
 bool isFinished(char **board,int Board_Size,char *winner){
-    
     int sum_one = 0;
-    for(int counter_vertically=0;counter_vertically<Board_Size;counter_vertically++){
-        for (int i = 0; i <Board_Size; i++) {
 
-            if (board[i][counter_vertically] == 'X'){
-                sum_one++;
-            }
-            if (board[i][counter_vertically] == 'O'){
-                sum_one--;
-            }
-            if(sum_one == Board_Size*-1){
-                *winner = 'O';
-                return true;
-            }
-            if(sum_one ==Board_Size){
-                *winner = 'X';
-                return true;
-            }  
+    for (int i = 0; i <Board_Size; i++) {
+        int counter_vertically = 0;
+        if (board[i][counter_vertically] == 'X'){
+            sum_one++;
         }
-        sum_one = 0;
+        if (board[i][counter_vertically] == 'O'){
+            sum_one--;
+        }
+        if(sum_one ==Board_Size || sum_one == Board_Size*-1){
+            return true;
+        }
+        counter_vertically++;
+        
     }
-
     int sum_two = 0;
-    for(int counter_horizontally = 0;counter_horizontally<Board_Size;counter_horizontally++){
-        for (int i = 0; i <Board_Size; i++) {
-            
-            if (board[counter_horizontally][i] == 'X'){
-                sum_two++;
-            }
-            if (board[counter_horizontally][i] == 'O'){
-                sum_two--;
-            }
-            if(sum_two == Board_Size*-1){
-                *winner = 'O';
-                return true;
-            }
-            if(sum_two ==Board_Size){
-                *winner = 'X';
-                return true;
-            }
-        }
-        sum_two = 0;
-    }
 
+    for (int i = 0; i <Board_Size; i++) {
+        int counter_horizontally = 0;
+        if (board[counter_horizontally][i] == 'X'){
+            sum_two++;
+        }
+        if (board[counter_horizontally][i] == 'O'){
+            sum_two--;
+        }
+        if(sum_two ==Board_Size || sum_two == Board_Size*-1){
+            return true;
+        }
+        counter_horizontally++;
+    }
     int sum_three = 0;
 
     for (int i = 0; i <Board_Size; i++){
@@ -96,39 +82,26 @@ bool isFinished(char **board,int Board_Size,char *winner){
         if(board[i][i] =='O'){
             sum_three--;
         }
-        if(sum_three == Board_Size*-1){
-            *winner = 'O';
-            return true;
-        }
-        if(sum_three ==Board_Size){
-            *winner = 'X';
+        if(sum_three ==Board_Size || sum_three == Board_Size*-1){
             return true;
         }
     }
-
     int sum_four = 0;
-    int counter = 0;
+
     for (int i = Board_Size-1;i>=0;i--){
+        int counter = 0;
         if(board[i][counter] == 'X'){
             sum_four++;
         }
-        if(board[i][counter] == 'O'){
+        if(board[i][counter] == '0'){
             sum_four--;
         }
-        if(sum_four == Board_Size*-1){
-            *winner = 'O';
-            return true;
-        }
-        if(sum_four ==Board_Size){
-            *winner = 'X';
+        if(sum_four ==Board_Size || sum_four == Board_Size*-1){
             return true;
         }
         counter++;
         
     }
-    sum_four = 0;
-    counter = 0;
-
     return false;
 }
 
@@ -140,8 +113,8 @@ bool setPoint(char **board, unsigned int x, unsigned int y, char player){
         return false;
     
 }
-bool check_if_digit(unsigned int number, int size){
-    if(number < size){
+bool check_if_digit(unsigned int number,int size){
+    if(number <size){
         return true;
     }
     return false;
@@ -176,31 +149,24 @@ int main(int argc, char *argv[]){
         if(setPoint(board,row,col,player)){
             if(player == 'X'){
                 player = 'O';
-                turn++;
             }
             else{
                 player = 'X';
-                turn++;
             }
         };
         showBoard(board,size);
         cout<<turn<<endl;
-        
+        turn++;
         if(turn == size*size){
             cout<<"Remis"<<endl;
             break;
         }
-    if (isFinished(board,size,&winner))
-    {
-        cout<<winner<<" won."<<endl;
-    }
-    
     
     
 }
 }
 
-
+// 1.Zmiana rozmiaru tabeli
 // 2.gracz-komputer
 // komendy pomocnicze:
 // rand()
