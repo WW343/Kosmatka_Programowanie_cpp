@@ -43,8 +43,8 @@ void changeProductQuantity(std::vector<Product> &products,std::string name,int q
 }
 
 void findProduct(std::vector<Product> &products,std::string name){
-    size_t i = 0;
-    for(i;i<products.size();i++){
+    // size_t i = 0;
+    for(size_t i=0;i<products.size();i++){
         if(products[i].name == name){
             std::cout << products[i].name << "\t" << products[i].price << "\t" << products[i].quantity << std::endl;
             break;
@@ -72,7 +72,9 @@ int main(int argc,char *argv[]){
 
 
     std::vector<Product> products;
-    read(products,argv[1]);
+    if (argc > 1){
+        read(products,argv[1]);
+    }
     int option = 0;
     std::string name;
     int price;
@@ -123,11 +125,11 @@ int main(int argc,char *argv[]){
                 findProduct(products,name);
                 break;
             case 6:
+                if (argc > 1){save(products,argv[1]);}
                 return 0;
-                save(products,argv[1]);
-            // default:
-            //     std::cout<<"Invalid option"<<std::endl;
-            //     break;
+            default:
+                std::cout<<"Invalid option"<<std::endl;
+                break;
         }
     }
  

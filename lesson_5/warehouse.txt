@@ -1,3 +1,3 @@
-marchewka       10      100
-kiwi    10      30
-mango   30  50
+marchewka	10	100
+kiwi	10	30
+mango	30	50
