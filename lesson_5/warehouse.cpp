@@ -3,6 +3,7 @@
 #include <fstream>
 
 
+
 struct Product {
     std::string name;
     int price;
@@ -124,9 +125,9 @@ int main(int argc,char *argv[]){
             case 6:
                 return 0;
                 save(products,argv[1]);
-            default:
-                std::cout<<"Invalid option"<<std::endl;
-                break;
+            // default:
+            //     std::cout<<"Invalid option"<<std::endl;
+            //     break;
         }
     }
  
