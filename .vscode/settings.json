@@ -113,6 +113,13 @@
     "variant": "cpp",
     "list": "cpp",
     "chrono": "cpp",
-    "ratio": "cpp"
+    "ratio": "cpp",
+    "any": "cpp",
+    "codecvt": "cpp",
+    "cstring": "cpp",
+    "forward_list": "cpp",
+    "map": "cpp",
+    "ranges": "cpp",
+    "valarray": "cpp"
   }
 }
