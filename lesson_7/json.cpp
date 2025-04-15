@@ -16,11 +16,28 @@ struct Student {
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(Student, id, firstName,lastName,score)
 };
 
-void dump(){
+void dump() {
     std::ifstream f("data.json");
     json data = json::parse(f);
-    std::cout << data.dump() << std::endl;
+
+    // Wyświetlanie danych w konsoli
+    std::cout << data.dump(4) << std::endl;
+
+    // Zapis danych do pliku JSON
+    std::ofstream outFile("output.json");
+    if (outFile.is_open()) {
+        outFile << data.dump(4); // Zapis z wcięciami dla lepszej czytelności
+        outFile.close();
+        std::cout << "Dane zapisano do pliku output.json" << std::endl;
+    } else {
+        std::cerr << "Nie udało się otworzyć pliku output.json do zapisu." << std::endl;
+    }
 }
+// void dump(){
+//     std::ifstream f("data.json");
+//     json data = json::parse(f);
+//     std::cout << data.dump() << std::endl;
+// }
 // std::string firstName,std::string lastName,float score
 void parse(){
     // srand (time(NULL));
