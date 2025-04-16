@@ -51,7 +51,11 @@ void parse(){
 
     for (const auto &item : v)
     {
-        std::cout << item.id << ": " << item.firstName<<' '<< item.lastName<<' '<<item.score << std::endl;
+        std::cout << item.id << ": " << item.firstName<<' '<< item.lastName<<' ';
+        [&](){
+            if (item.score<50){std::cout<<'2';};
+
+        
     }
 }
 int main(){
