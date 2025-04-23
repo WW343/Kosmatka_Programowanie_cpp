@@ -4,7 +4,7 @@
   "C_Cpp_Runner.debuggerPath": "gdb",
   "C_Cpp_Runner.cStandard": "",
   "C_Cpp_Runner.cppStandard": "",
-  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/VR_NR/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.useMsvc": false,
   "C_Cpp_Runner.warnings": [
     "-Wall",
@@ -120,6 +120,41 @@
     "forward_list": "cpp",
     "map": "cpp",
     "ranges": "cpp",
-    "valarray": "cpp"
-  }
+    "valarray": "cpp",
+    "barrier": "cpp",
+    "bitset": "cpp",
+    "cfenv": "cpp",
+    "cinttypes": "cpp",
+    "complex": "cpp",
+    "condition_variable": "cpp",
+    "coroutine": "cpp",
+    "csetjmp": "cpp",
+    "csignal": "cpp",
+    "cuchar": "cpp",
+    "set": "cpp",
+    "unordered_set": "cpp",
+    "expected": "cpp",
+    "regex": "cpp",
+    "source_location": "cpp",
+    "future": "cpp",
+    "latch": "cpp",
+    "mutex": "cpp",
+    "scoped_allocator": "cpp",
+    "semaphore": "cpp",
+    "shared_mutex": "cpp",
+    "spanstream": "cpp",
+    "stacktrace": "cpp",
+    "stdfloat": "cpp",
+    "stop_token": "cpp",
+    "syncstream": "cpp",
+    "thread": "cpp",
+    "typeindex": "cpp"
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
