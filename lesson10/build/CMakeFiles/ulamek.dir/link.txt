@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Werror -pedantic CMakeFiles/ulamek.dir/Ulamek.cpp.o CMakeFiles/ulamek.dir/main.cpp.o -o ulamek  -lm 
