@@ -156,6 +156,6 @@
     "markdown": false,
     "scminput": false
   },
-  "C_Cpp.errorSquiggles": "disabled",
+  "C_Cpp.errorSquiggles": "enabled",
   "cmake.sourceDirectory": "/home/u340471/Pulpit/Kosmartka_cpp/lesson10"
 }
