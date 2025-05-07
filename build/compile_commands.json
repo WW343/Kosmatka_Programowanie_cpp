@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/u340471/Pulpit/Kosmartka_cpp/build",
+  "command": "/usr/bin/g++    -Wall -Wextra -Werror -pedantic -g -o CMakeFiles/ulamek.dir/Ulamek.cpp.o -c /home/u340471/Pulpit/Kosmartka_cpp/lesson10/Ulamek.cpp",
+  "file": "/home/u340471/Pulpit/Kosmartka_cpp/lesson10/Ulamek.cpp",
+  "output": "CMakeFiles/ulamek.dir/Ulamek.cpp.o"
+},
+{
+  "directory": "/home/u340471/Pulpit/Kosmartka_cpp/build",
+  "command": "/usr/bin/g++    -Wall -Wextra -Werror -pedantic -g -o CMakeFiles/ulamek.dir/main.cpp.o -c /home/u340471/Pulpit/Kosmartka_cpp/lesson10/main.cpp",
+  "file": "/home/u340471/Pulpit/Kosmartka_cpp/lesson10/main.cpp",
+  "output": "CMakeFiles/ulamek.dir/main.cpp.o"
+}
+]

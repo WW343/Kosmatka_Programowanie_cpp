@@ -1,0 +1,3 @@
+/home/u340471/Pulpit/Kosmartka_cpp/build/CMakeFiles/ulamek.dir
+/home/u340471/Pulpit/Kosmartka_cpp/build/CMakeFiles/edit_cache.dir
+/home/u340471/Pulpit/Kosmartka_cpp/build/CMakeFiles/rebuild_cache.dir
